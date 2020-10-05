@@ -1,4 +1,4 @@
-# our base build image
+:# our base build image
 FROM nvidia/cuda:10.1-devel as cuda-build
 
 ##########
