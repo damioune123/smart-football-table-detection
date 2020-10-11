@@ -40,6 +40,15 @@ RUN make
 RUN sed -i 's/from queue/from multiprocessing/g' darknet_video.py
 RUN wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.weights
 
-#ENTRYPOINT ["python3", "-u", "/darknet/darknet_video.py"]
-CMD ["sleep", "infinity"]
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+RUN pip install paho-mqtt
+
+COPY opencv_yolo/darknet_video.py .
+COPY opencv_yolo/customDarknet.py .
+COPY yolov3-models yolov3-models
+COPY docker-entrypoint.sh .
+
+ENTRYPOINT ["./docker-entrypoint.sh"]
+CMD []
 
