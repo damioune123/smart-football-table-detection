@@ -1,4 +1,0 @@
-numpy
-imutils
-flask
-paho-mqtt
