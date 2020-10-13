@@ -89,6 +89,7 @@ COPY opencv_yolo/darknet_video.py .
 COPY opencv_yolo/customDarknet.py .
 COPY yolov3-models yolov3-models
 COPY docker-entrypoint.sh .
+RUN sed -i '1 i\xrange=range' darknet_video.py
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
 CMD []
